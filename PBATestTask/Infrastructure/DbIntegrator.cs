@@ -16,6 +16,11 @@ namespace Infrastructure
                     break;
                 case ConfiguredContext.User:
                     collection.AddEntityFrameworkSqlServer().AddDbContext<UserContext>(builder => builder.UseSqlServer(connectionString));
+                    collection.AddEntityFrameworkSqlServer().AddDbContext<DbContext>((provider, builder) =>
+                        {
+                            provider.GetService(typeof(UserContext));
+                            builder.UseSqlServer(ConnectionString.Value);
+                        });
                     break;
             }
         }

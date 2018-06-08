@@ -11,7 +11,7 @@ namespace Infrastructure
         private readonly DbContext _context;
         private readonly DbSet<TEntity> _dbSet;
 
-        public EfGenericRepository(UserContext context)
+        public EfGenericRepository(DbContext context)
         {
             _context = context;
             _dbSet = context.Set<TEntity>();
