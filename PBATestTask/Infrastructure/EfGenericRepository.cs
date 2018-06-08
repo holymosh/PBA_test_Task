@@ -11,10 +11,10 @@ namespace Infrastructure
         private readonly DbContext _context;
         private readonly DbSet<TEntity> _dbSet;
 
-        public EfGenericRepository(DbContext context)
+        public EfGenericRepository(IDbContextWrapper context)
         {
-            _context = context;
-            _dbSet = context.Set<TEntity>();
+            _context = context.Context;
+            _dbSet = context.Context.Set<TEntity>();
         }
 
 
