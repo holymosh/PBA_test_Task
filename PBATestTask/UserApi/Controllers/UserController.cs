@@ -75,7 +75,7 @@ namespace UserApi.Controllers
         [Route("find")]
         public IActionResult FindByName([FromQuery] string name)
         {
-            return Ok(_repository.FindByPredicate(user => user.Username.Equals(name)));
+            return Ok(_repository.FindByPredicate(user => user.Username.Contains(name)));
         }
     }
 }
